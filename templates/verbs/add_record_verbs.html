@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Manage records{% endblock %}
+{% block content %}
+<br>
+<form method="POST" autocomplete="off" style="margin: 20px" enctype="multipart/form-data">
+  <div class="form-group">
+      <select required name="verbs_group" id="verbs_group" class="form-control form-select">
+          <option value='' selected disabled hidden>Choose group</option>
+          <option value='Easy'>Easy</option>
+          <option value='Medium'>Medium</option>
+          <option value='Hard'>Hard</option>
+      </select>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="pl" placeholder="PL word" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="form1" placeholder="Verb" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="form2" placeholder="Past Tense" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="form3" placeholder="Past Participle" required>
+    </div>
+  </div>
+  <br>
+  <input class="btn btn-success btn-size" type="submit" name="save" value="Save record">
+  <br><br>
+  <font color="white">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          {{msg}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </font>
+</form>
+<form method="POST" style="margin: 20px" enctype="multipart/form-data">
+  <div class="form-row align-items-center">
+    <div class="col-sm-2">
+      <input class="btn btn-primary btn-size" type="submit" name="import" value="Import file">
+    </div>
+    <div class="col-sm-2">
+      <input type="file" class="form-control form-control-sm" name="file">
+    </div>
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+1. pozmieniać nazwy na words
+OK 2. zrobić view results na verbs zeby mozna było filtrować po userach
+3. zrobić wgląd do users db ale tylko dla admina
+4. uporzadkować pliki w folderach
+5. zrobić practice words
+6. wgrać wszystkie czasowniki
+OK 7. zrobić opcje wyboru mix/ easy/medium medium/hard

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Add word{% endblock %}
+{% block content %}
+<br>
+<form method="POST" autocomplete="off" style="margin: 20px" enctype="multipart/form-data">
+  <div class="form-group">
+      <select required name="words_group" class="form-control form-select">
+          <option value='' selected disabled hidden>Choose group</option>
+          <option value='Verbs'>Verbs</option>
+          <option value='Nouns'>Nouns</option>
+          <option value='Phrases'>Phrases</option>
+          <option value='Others'>Others</option>
+        </select>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="pl" placeholder="PL word" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="foreign" placeholder="Foreign word" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="label_1" placeholder="Label 1" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <input class="form-control" type="text" name="label_2" placeholder="Label 2" required>
+    </div>
+  </div>
+  <br>
+  <input class="btn btn-success btn-size" type="submit" name="save" value="Save record">&emsp;
+  <br><br>
+  <font color="white">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          {{msg}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </font>
+</form>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles_login.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="card my-4">
+          <form class="card-body cardbody-color p-lg-3" method="POST">
+            <div class="text-center">
+              <img src="{{ url_for('static',filename='images/llama.png') }}" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                width="100px" alt="profile">
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp"
+                placeholder="User Name" autocomplete="off">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="text-center"><input type="submit" name="login" id="login" class="btn btn-color px-5 mb-3 w-100" value="Login">
+            <a href="sign_up.html" class="text-dark fw-bold"> Create an Account</a><br><br>
+              <font color="red">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for msg in messages %}
+                  {{msg}}
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+              </font>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</html>
+
+
+

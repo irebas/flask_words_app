@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Manage records{% endblock %}
+{% block content %}
+
+<form method="POST" autocomplete="off" style="margin: 20px">
+    <div class="form-row align-items-center">
+        <label for="selected_word" class="col-sm-2 col-form-label" style="color: white">Select word:</label>
+        <div class="col-sm-2">
+            <select name="selected_word" id="selected_word" class="form-control form-select">
+                <option value="{{selected_word if selected_word}}" selected hidden>{{selected_word if selected_word}}</option>
+                {% for item in words_list %}
+                    <OPTION value='{{item.pl}}'>{{item.pl}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto my-1">
+            <input class="btn btn-primary btn-size" type="submit" name="show" value="Show record">&emsp;
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="words_group" class="col-sm-2 col-form-label" style="color: white">Group:</label>
+        <div class="col-sm-2">
+            <select name="words_group" id="words_group" class="form-control form-select">
+                <option value="{{words_group if words_group}}" selected hidden>{{words_group if words_group}}</option>
+                <option value='Verbs'>Verbs</option>
+                <option value='Nouns'>Nouns</option>
+                <option value='Phrases'>Phrases</option>
+                <option value='Others'>Others</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="pl" class="col-sm-2 col-form-label" style="color: white">PL word:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="pl" id="pl" value="{{ pl if pl }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="foreign" class="col-sm-2 col-form-label" style="color: white">ES word:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="foreign" id="foreign" value="{{ foreign if foreign }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="label_1" class="col-sm-2 col-form-label" style="color: white">Label 1:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="label_1" id="label_1" value="{{ label_1 if label_1 }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="label_2" class="col-sm-2 col-form-label" style="color: white">Label 2:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="label_2" id="label_2" value="{{ label_2 if label_2 }}">
+        </div>
+    </div>
+    <br>
+    <input class="btn btn-success btn-size" type="submit" name="save" value="Save record">&emsp;
+    <input class="btn btn-danger btn-size" type="submit" name="delete" value="Delete record">
+    <br><br>
+    <font color="white">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          {{msg}}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    </font>
+</form>
+
+
+{% endblock %}

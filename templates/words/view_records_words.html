@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}View words{% endblock %}
+{% block content %}
+
+<form method="POST" autocomplete="off" style="margin: 20px" enctype="multipart/form-data">
+<p>
+<div class="form-row align-items-center">
+    <div class="col-sm-2">
+        <select name="words_group" class="form-control form-select">
+            <option value='' selected hidden>Group</option>
+            <option value='Verbs'>Verbs</option>
+            <option value='Nouns'>Nouns</option>
+            <option value='Phrases'>Phrases</option>
+            <option value='Others'>Others</option>
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <select name="label_1" class="form-control form-select">
+            <option value='' selected hidden>Label 1</option>
+            {% for label_1 in label_1_list %}
+                <OPTION value='{{ label_1 }}'>{{ label_1 }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <select name="label_2" class="form-control form-select">
+            <option value='' selected hidden>Label 2</option>
+            {% for label_2 in label_2_list %}
+                <OPTION value='{{ label_2 }}'>{{ label_2 }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <input class="btn btn-primary btn-size" type="submit" name="filter" value="Filter records">&emsp;
+    </div>
+</div>
+
+</p>
+
+</form>
+
+<table class="table table-striped table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Group</th>
+      <th scope="col">PL Word</th>
+      <th scope="col">Foreign Word</th>
+      <th scope="col">Label 1</th>
+      <th scope="col">Label 2</th>
+      <th scope="col">Date</th>
+      <th scope="col">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in words %}
+      <tr>
+        <td>{{ item.words_group }}</td>
+        <td>{{ item.pl }}</td>
+        <td>{{ item.foreign }}</td>
+        <td>{{ item.label_1 }}</td>
+        <td>{{ item.label_2 }}</td>
+        <td>{{ item.date }}</td>
+        <td>{{ item.owner }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

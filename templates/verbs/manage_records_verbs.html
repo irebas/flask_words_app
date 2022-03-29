@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Manage verbs{% endblock %}
+{% block content %}
+
+<form method="POST" autocomplete="off" style="margin: 20px">
+    <div class="form-row align-items-center">
+        <label for="selected_verb" class="col-sm-2 col-form-label" style="color: white">Select verb:</label>
+        <div class="col-sm-2">
+            <select name="selected_verb" id="selected_verb" class="form-control form-select">
+                <option value="{{selected_verb if selected_verb}}" selected hidden>{{selected_verb if selected_verb}}</option>
+                {% for item in verbs_list %}
+                    <OPTION value='{{ item.pl }}'>{{ item.pl }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-auto my-1">
+            <input class="btn btn-primary btn-size" type="submit" name="show" value="Show record">&emsp;
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="verbs_group" class="col-sm-2 col-form-label" style="color: white">Verbs group:</label>
+        <div class="col-sm-2">
+            <select name="verbs_group" id="verbs_group" class="form-control form-select">
+                <option value="{{ verbs_group if verbs_group }}" selected hidden>{{ verbs_group if verbs_group }}</option>
+                <option value='Easy'>Easy</option>
+                <option value='Medium'>Medium</option>
+                <option value='Hard'>Hard</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="pl" class="col-sm-2 col-form-label" style="color: white">PL word:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="pl" id="pl" value="{{ pl if pl }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="form1" class="col-sm-2 col-form-label" style="color: white">Verb:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="form1" id="form1" value="{{ form1 if form1 }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="form2" class="col-sm-2 col-form-label" style="color: white">Verb:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="form2" id="form2" value="{{ form2 if form2 }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-row align-items-center">
+        <label for="form3" class="col-sm-2 col-form-label" style="color: white">Verb:</label>
+        <div class="col-sm-2">
+            <input class="form-control" type="text" name="form3" id="form3" value="{{ form3 if form3 }}">
+        </div>
+    </div>
+    <br>
+    <input class="btn btn-success btn-size" type="submit" name="save" value="Save record">&emsp;
+    <input class="btn btn-danger btn-size" type="submit" name="delete" value="Delete record">
+    <br><br>
+    <font color="white">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for msg in messages %}
+              {{msg}}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </font>
+
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+flask==2.0.2
+flask_sqlalchemy==2.5.1
+openpyxl==3.0.9
+
+## https://medium.com/swlh/how-to-host-your-flask-app-on-pythonanywhere-for-free-df8486eb6a42
+## https://www.sqlitetutorial.net/sqlite-commands/
